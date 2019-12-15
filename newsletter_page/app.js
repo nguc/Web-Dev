@@ -10,10 +10,6 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-app.listen(3000, function () {
-    console.log("Server is listening on port 3000");
-});
-
 app.post("/", function (req, res) {
     var firstName = req.body.fName;
     var lastName = req.body.lName;
@@ -36,7 +32,7 @@ app.post("/", function (req, res) {
         url: "https://us4.api.mailchimp.com/3.0/lists/e235aba172",
         method: "POST",
         headers: {
-            "Authorization": "chi d5b45ce614d7c8df075db5de605a0906-us4"
+            "Authorization": "chi bbcb29e06a9992e819b02ba3037dc63d-us4"
         },
         body: jsonData,
     };
@@ -64,8 +60,12 @@ app.get("/", function (req, res) {
     res.sendFile(__dirname + "/signup.html");
 });
 
+app.listen(process.env.PORT || 3000, function () {
+    console.log("Server is listening on port 3000");
+});
+
 // Api key
-// d5b45ce614d7c8df075db5de605a0906-us4
+// bbcb29e06a9992e819b02ba3037dc63d-us4
 
 // List id
 // e235aba172
